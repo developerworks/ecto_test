@@ -1,0 +1,9 @@
+%{"connection": {:hex, :connection, "1.0.2"},
+  "db_connection": {:hex, :db_connection, "0.2.5"},
+  "decimal": {:hex, :decimal, "1.1.2"},
+  "ecto": {:hex, :ecto, "2.0.0-rc.3"},
+  "exfswatch": {:hex, :exfswatch, "0.1.1"},
+  "exsync": {:hex, :exsync, "0.1.2"},
+  "fs": {:hex, :fs, "0.9.2"},
+  "mariaex": {:hex, :mariaex, "0.7.4"},
+  "poolboy": {:hex, :poolboy, "1.5.1"}}
