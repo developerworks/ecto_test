@@ -10,7 +10,7 @@
 
 基类模块
 
-```
+```elixir
 require Logger
 defmodule EctoTest.Model do
   @moduledoc """

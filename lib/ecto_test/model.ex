@@ -22,8 +22,8 @@ defmodule EctoTest.Model do
         q |> Repo.all
       end
       @spec insert(map) :: {:ok, Schema.t} | {:error, Changeset.t}
-      def insert(map) do
-        Map.merge(map) |> Repo.insert
+      def insert(map, model) do
+        Map.merge(model, map) |> Repo.insert
       end
       defoverridable [get: 1, insert: 1]
     end
