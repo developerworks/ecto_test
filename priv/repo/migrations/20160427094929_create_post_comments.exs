@@ -5,6 +5,7 @@ defmodule EctoTest.Repo.Migrations.CreatePostComments do
     create table(:posts) do
       add :title, :string
       add :body, :text
+      add :permalinks, {:array, :map}, default: []
       timestamps
     end
 

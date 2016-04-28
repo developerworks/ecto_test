@@ -12,15 +12,16 @@ defmodule EctoTest.Mixfile do
 
   def application do
     dev_packages = Mix.env == :dev && [:exsync] || []
-    [applications: [:logger, :mariaex, :ecto] ++ dev_packages,
+    [applications: [:logger, :postgrex, :ecto] ++ dev_packages,
      mod: {EctoTest, []}]
   end
 
   defp deps do
     [
-      {:mariaex, "~> 0.7.4"},
+      {:poison, "~> 2.1"},
+      {:postgrex, ">= 0.0.0"},
       {:ecto, "~> 2.0.0-rc.3"},
-      {:exsync, "~> 0.1.2", only: [:dev]}
+      {:exsync, "~> 0.1.2", only: [:dev]},
     ]
   end
 end
