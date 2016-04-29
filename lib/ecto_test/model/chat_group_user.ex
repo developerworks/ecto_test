@@ -9,6 +9,7 @@ defmodule EctoTest.Model.ChatGroupUser do
   schema "chat_group_users" do
     belongs_to :chat_group, ChatGroup
     belongs_to :user, User
+    timestamps
   end
 
   @spec insert(map) :: {:ok, Schema.t} | {:error, Changeset.t}
