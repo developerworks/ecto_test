@@ -1,4 +1,3 @@
-require Logger
 defmodule EctoTest.Model do
   @moduledoc """
   """
@@ -7,6 +6,7 @@ defmodule EctoTest.Model do
 
   defmacro __using__(_opts) do
     quote do
+      require Logger
       @behaviour EctoTest.Model
       alias Ecto.Schema
       alias Ecto.Changeset

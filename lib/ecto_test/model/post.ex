@@ -11,6 +11,14 @@ defmodule EctoTest.Post do
     timestamps
   end
 
+  def get(id) do
+    Repo.get __MODULE__, id
+  end
+
+  def get_by(id) do
+    Repo.get_by __MODULE__, id: id
+  end
+
   def test_insert do
     changeset = Ecto.Changeset.change(%__MODULE__{})
     changeset = Ecto.Changeset.put_embed(changeset, :permalinks, [
