@@ -7,6 +7,7 @@ defmodule EctoTest.Model.ChatGroup do
 
   schema "chat_groups" do
     field :name, :string, null: false
+
     has_many :chat_group_users, ChatGroupUser, on_delete: :delete_all
     has_many :users, through: [:chat_group_users, :user]
     timestamps
