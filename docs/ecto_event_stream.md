@@ -1,4 +1,4 @@
-> 回调模块 Ecto.Model.Callbacks 已经在 2.0 中被废弃, 1.x 版本的 Ecto 可以继续使用.
+> 回调模块 `Ecto.Model.Callbacks` 已经在 `2.0` 中被废弃, `1.x` 版本的 Ecto 可以继续使用.
 
 Ecto 提供了 `before_insert`, `after_insert`这样的回调函数来在数据库操作前后做一些事情, 我们经常把这种函数称为`钩子`. 我们这里有一个例子, 用户注册完成后需要向其邮箱发送一封激活邮件. 通常我们在控制器(`UserController`)中实现一个`create`函数用于创建用户, 例如:
 
@@ -50,8 +50,8 @@ children = [
 
 ```elixir
 defmodule EctoTest.ModelLifecycle do
-  # 2.0 已经被废弃
-  # import Ecto.Model.Callbacks
+  # Ecto.Model.Callbacks 在 2.0 已经被废弃
+  import Ecto.Model.Callbacks
   alias EctoTest.EventManager
   defmacro __using__(_) do
     quote do
