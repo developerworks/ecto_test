@@ -5,6 +5,7 @@ defmodule EctoTest do
 
     children = [
       worker(EctoTest.Repo, []),
+      worker(EctoTest.EventManager, [])
     ]
     opts = [strategy: :one_for_one, name: EctoTest.Supervisor]
     Supervisor.start_link(children, opts)

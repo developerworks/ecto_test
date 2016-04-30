@@ -3,6 +3,7 @@ defmodule EctoTest.Model.User do
 
   """
   use EctoTest.Model
+  # use EctoTest.ModelLifecyle
   alias EctoTest.Model.ChatGroupUser
   alias EctoTest.Repo
 
