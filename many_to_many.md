@@ -1,6 +1,8 @@
 本文是参考下面的文章做的一个实际例子
+[http://blog.plataformatec.com.br/2015/08/working-with-ecto-associations-and-embeds/](http://blog.plataformatec.com.br/2015/08/working-with-ecto-associations-and-embeds/)
 [http://learningwithjb.com/posts/many-to-many-relationship](http://learningwithjb.com/posts/many-to-many-relationship)
 [http://stackoverflow.com/questions/32900114/many-to-many-relationship-in-ecto](http://stackoverflow.com/questions/32900114/many-to-many-relationship-in-ecto)
+
 
 ## 代码库
 
