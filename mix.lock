@@ -3,6 +3,7 @@
   "decimal": {:hex, :decimal, "1.1.2"},
   "ecto": {:hex, :ecto, "2.0.0-rc.3"},
   "ex_machina": {:hex, :ex_machina, "0.6.1"},
+  "ex_unit_notifier": {:hex, :ex_unit_notifier, "0.1.1"},
   "exfswatch": {:hex, :exfswatch, "0.1.1"},
   "exsync": {:hex, :exsync, "0.1.2"},
   "factory_girl_elixir": {:hex, :factory_girl_elixir, "0.1.1"},

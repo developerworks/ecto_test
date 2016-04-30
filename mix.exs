@@ -7,7 +7,9 @@ defmodule EctoTest.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     aliases: aliases
+   ]
   end
 
   def application do
@@ -24,6 +26,14 @@ defmodule EctoTest.Mixfile do
       {:ex_machina, "~> 0.6.1"},
       # {:factory_girl_elixir, "~> 0.1.1"},
       {:exsync, "~> 0.1.2", only: [:dev]},
+      {:ex_unit_notifier, "~> 0.1.1"}
+    ]
+  end
+
+  defp aliases do
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end
 end
