@@ -72,11 +72,11 @@ iex -S mix
 ```
 # 插入用户数据
 
-iex(40)> EctoTest.Factory.load_users 
+iex(40)> EctoTest.Factory.load_users
 
 # 插入聊天组数据
 
-iex(41)> EctoTest.Factory.load_chat_groups  
+iex(41)> EctoTest.Factory.load_chat_groups
 
 # 插入用户-聊天组关系数据
 
@@ -84,7 +84,7 @@ iex(42)> EctoTest.Factory.load_chat_group_user
 
 # 查询用户ID为1的用户, 并加载其所在的组列表
 
-iex(47)> users = EctoTest.Model.User |> EctoTest.Repo.get(1) |> EctoTest.Repo.preload(:chat_groups)
+iex(47)> user = EctoTest.Model.User |> EctoTest.Repo.get(1) |> EctoTest.Repo.preload(:chat_groups)
 
 # 访问用户所在的组
 iex(51)> user.chat_groups
