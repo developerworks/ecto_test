@@ -25,6 +25,6 @@ defmodule EctoTest.Post do
       %Permalink{url: "example.com/thebest"},
       %Permalink{url: "another.com/mostaccessed"}
     ])
-    post = Repo.insert!(changeset)
+    Repo.insert!(changeset)
   end
 end

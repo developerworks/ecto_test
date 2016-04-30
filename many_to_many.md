@@ -187,7 +187,15 @@ commit []
 chat_group = %EctoTest.Model.ChatGroup{name: "chat_group2"} |> EctoTest.Repo.insert!
 user = %EctoTest.Model.User{name: "user2"} |> EctoTest.Repo.insert!
 %EctoTest.Model.ChatGroupUser{user_id: user.id, chat_group_id: chat_group.id} |> EctoTest.Repo.insert!
-``` 
+```
+
+读取用户, 以及用户的聊天组
+
+```elixir
+EctoTest.Model.User |> EctoTest.Repo.get(1) |> EctoTest.Repo.preload(:chat_groups)
+```
+
+或调用 `EctoTest.Model.User.get(1)`
 
 ## `Ecto` 的 `Mix` 命令
 

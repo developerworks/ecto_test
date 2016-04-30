@@ -4,6 +4,7 @@ defmodule EctoTest.Model.User do
   """
   use EctoTest.Model
   alias EctoTest.Model.ChatGroupUser
+  alias EctoTest.Repo
 
   schema "users" do
     field :name,  :string, null: false
@@ -17,5 +18,11 @@ defmodule EctoTest.Model.User do
   @spec insert(map) :: {:ok, Schema.t} | {:error, Changeset.t}
   def insert(map) do
     Map.merge(%__MODULE__{}, map) |> Repo.insert
+  end
+
+  def get(id) do
+    EctoTest.Model.User
+    |> Repo.get(id)
+    |> Repo.preload(:chat_groups)
   end
 end

@@ -98,32 +98,49 @@ account.settings #=> %Settings{...}
 `embeds_many` 允许你嵌入一个 Ecto 结构数组到一个关系数据库字段中. 在数据库底层 Postgres 使用了 `array` 和 `jsonb` 数据类型来实现 `embeds_many`.
 
 ```elixir
-defmodule MyApp.Repo.Migrations.CreatePeople do
+defmodule EctoTest.Repo.Migrations.CreateTablePeople do
   use Ecto.Migration
-  def change do
-    alter table(:people) do
+
+  def up do
+    create table(:people) do
       add :name, :string
-      # It is recommended to set the default value to an empty array.
-      add :addresses, {:array, :map}, default: []
+      add :address, {:array, :map}, default: []
     end
   end
+
+  def down do
+    drop table(:people)
+  end
 end
+
 ```
 
 定义 `Person`, `Address` 模型:
 
 ```elixir
-defmodule Person do
-  use Ecto.Model
+defmodule EctoTest.Model.Person do
+  use Ecto.Schema
+  alias EctoTest.Model.Address
 
   schema "people" do
     field :name
     embeds_many :addresses, Address
   end
+
+  def test_insert do
+    changeset = Ecto.Changeset.change(%__MODULE__{})
+    addresses = [
+      %Address{street_name: "20 Foobar Street",city: "Boston",state: "MA",zip_code: "02111"},
+      %Address{street_name: "1 Finite Loop", city: "Cupertino",state: "CA",zip_code: "95014"}
+    ]
+    changeset = Ecto.Changeset.put_embed(changeset, :addresses, addresses)
+    Repo.insert!(changeset)
+  end
 end
 
-defmodule Address do
-  use Ecto.Model
+
+defmodule EctoTest.Model.Address do
+  use Ecto.Schema
 
   embedded_schema do
     field :street_name
@@ -137,33 +154,35 @@ end
 设置多对多字段的值
 
 ```elixir
-person = Repo.get!(Person, 7)
-addresses = [
-  %Address{
-    street_name: "20 Foobar Street",
-    city: "Boston",
-    state: "MA",
-    zip_code: "02111"
-  },
-  %Address{
-    street_name: "1 Finite Loop",
-    city: "Cupertino",
-    state: "CA",
-    %zip_code: "95014"
-  },
-]
+iex(1)> EctoTest.Model.Person.test_insert
 
-changeset = Ecto.Changeset.change(person)
-changeset = Ecto.Changeset.put_change(person, :addresses, addresses)
-
-Repo.update!(changeset)
+13:44:25.731 [debug] QUERY OK db=9.4ms
+INSERT INTO "people" ("addresses") VALUES ($1) RETURNING "id" [[%{city: "Boston", id: "2de7fd44-a1cf-44cd-a060-d6260325ac90", state: "MA", street_name: "20 Foobar Street", zip_code: "02111"}, %{city: "Cupertino", id: "bb65fd96-f1b1-4f0d-a92e-712884e40a7c", state: "CA", street_name: "1 Finite Loop", zip_code: "95014"}]]
+%EctoTest.Model.Person{__meta__: #Ecto.Schema.Metadata<:loaded>,
+ addresses: [%EctoTest.Model.Address{city: "Boston", id: "2de7fd44-a1cf-44cd-a060-d6260325ac90", state: "MA",
+   street_name: "20 Foobar Street", zip_code: "02111"},
+  %EctoTest.Model.Address{city: "Cupertino", id: "bb65fd96-f1b1-4f0d-a92e-712884e40a7c", state: "CA",
+   street_name: "1 Finite Loop", zip_code: "95014"}], id: 1, name: nil}
 ```
 
 像 `has_many` 一样访问:
 
 ```elixir
-person = Repo.get!(Person, 5)
-person.addresses #=> [%Address{...}, %Address{...}]
+iex(2)> person = EctoTest.Repo.get!(EctoTest.Model.Person, 1)
+
+13:45:04.634 [debug] QUERY OK db=1.4ms decode=9.5ms
+SELECT p0."id", p0."name", p0."addresses" FROM "people" AS p0 WHERE (p0."id" = $1) [1]
+%EctoTest.Model.Person{__meta__: #Ecto.Schema.Metadata<:loaded>,
+ addresses: [%EctoTest.Model.Address{city: "Boston", id: "2de7fd44-a1cf-44cd-a060-d6260325ac90", state: "MA",
+   street_name: "20 Foobar Street", zip_code: "02111"},
+  %EctoTest.Model.Address{city: "Cupertino", id: "bb65fd96-f1b1-4f0d-a92e-712884e40a7c", state: "CA",
+   street_name: "1 Finite Loop", zip_code: "95014"}], id: 1, name: nil}
+
+iex(3)> person.addresses
+[%EctoTest.Model.Address{city: "Boston", id: "2de7fd44-a1cf-44cd-a060-d6260325ac90", state: "MA",
+  street_name: "20 Foobar Street", zip_code: "02111"},
+ %EctoTest.Model.Address{city: "Cupertino", id: "bb65fd96-f1b1-4f0d-a92e-712884e40a7c", state: "CA",
+  street_name: "1 Finite Loop", zip_code: "95014"}]
 ```
 
 ## 权衡
