@@ -5,3 +5,4 @@
 - [Elixir Ecto: 使用 ExMachina 批量生成测试数据](ex_machina.md)
 - [Elixir Ecto: 多对多关系](many_to_many.md)
 - [Elixir Ecto: 模型的嵌入(Embed)](embed.md)
+- [Elixir Ecto: 自定义数据类型](custom_type.md)
