@@ -24,7 +24,6 @@ defmodule EctoTest.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:ecto, "~> 2.0.0-rc.3"},
       {:ex_machina, "~> 0.6.1"},
-      # {:factory_girl_elixir, "~> 0.1.1"},
       {:exsync, "~> 0.1.2", only: [:dev]},
       {:ex_unit_notifier, "~> 0.1.1"}
     ]
