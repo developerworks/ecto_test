@@ -26,7 +26,8 @@ use Mix.Config
 config :ecto_test, EctoTest.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "ecto_test",
-  username: "hezhiqiang",
+  username: "root",
   password: "root",
   hostname: "127.0.0.1",
-  pool_size: 1
+  pool_size: 1,
+  loggers: [{Ecto.LogEntry, :log, [:debug]}]

@@ -1,7 +1,7 @@
-## 为什么需要自定义的数据类型? 
+## 为什么需要自定义的数据类型?
 
-> **需求**: 
-> 系统中需要存储超过Postgres的`int8`(8字节, 64位)的整数, 那只有把它存储为字符串了. 
+> **需求**:
+> 系统中需要存储超过Postgres的`int8`(8字节, 64位)的整数, 那只有把它存储为字符串了.
 
 > **原因**:
 > 因为, 在我的Elixir项目中这个`hash`值用到了很多很多地方, 类型是整数, 并且用于二进制协议的解析和编码, 我想要的效果就是从数据库出来的数据到程序中就是我期望的类型, 而不是在程序中到处用`:erlang.string_to_integer/1`来做转换, 这样可以让代码更加简洁一点. 就这么一个用途, 没别的了.
@@ -118,9 +118,16 @@ end
 
 好了, 自定义数据就说到这里了. 项目的仓库在 https://github.com/developerworks/ecto_test 上, 需要测试的可以去clone下来测试.
 
+## 2016-05-03 补充
+
+关于自定数据类型的实现, 入库和出库调用的函数.
+
+![图片描述][6]
+
 
   [1]: https://segmentfault.com/img/bVviU6
   [2]: https://segmentfault.com/img/bVviVY
   [3]: https://segmentfault.com/img/bVviV4
   [4]: https://segmentfault.com/img/bVviWC
   [5]: https://segmentfault.com/img/bVviWG
+  [6]: https://segmentfault.com/img/bVvlRs
