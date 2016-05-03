@@ -23,9 +23,11 @@ defmodule EctoTest.Mixfile do
       {:poison, "~> 2.1"},
       {:postgrex, ">= 0.0.0"},
       {:ecto, "~> 2.0.0-rc.3"},
+      {:apex, "~>0.4.0"},
       {:ex_machina, "~> 0.6.1"},
       {:exsync, "~> 0.1.2", only: [:dev]},
-      {:ex_unit_notifier, "~> 0.1.1"}
+      {:ex_unit_notifier, "~> 0.1.1"},
+
     ]
   end
 

@@ -150,8 +150,9 @@ defmodule ChatGroupUser do
   alias EctoTest.Model.ChatGroup
 
   schema "chat_group_users" do
-    has_many :chat_group_users, ChatGroup
-    has_many :users, through: [:chat_group_users, :user]
+    belongs_to :chat_group, ChatGroup
+    belongs_to :user, User
+    timestamps
   end
 
   @spec insert(map) :: {:ok, Schema.t} | {:error, Changeset.t}

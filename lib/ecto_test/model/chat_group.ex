@@ -17,5 +17,11 @@ defmodule EctoTest.Model.ChatGroup do
   def insert(map) do
     Map.merge(%__MODULE__{}, map) |> Repo.insert
   end
+
+  def get(id) do
+    EctoTest.Model.ChatGroup
+    |> Repo.get(id)
+    |> Repo.preload(:users)
+  end
 end
 
