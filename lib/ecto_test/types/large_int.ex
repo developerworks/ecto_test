@@ -14,15 +14,17 @@ defmodule EctoTest.Types.LargeInt do
     Logger.debug "cast is_integer"
     {:ok, :erlang.integer_to_binary(integer)}
   end
+
   @doc """
-  elixir -> database
+  database type -> custom type
   """
   def load(string) do
     Logger.debug "load"
     {:ok, string |> String.strip |> String.to_integer()}
   end
+
   @doc """
-  database -> elixir
+  custom type -> db type
   """
   def dump(integer) when is_integer(integer) do
     Logger.debug "dump"
