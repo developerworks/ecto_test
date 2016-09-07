@@ -4,7 +4,7 @@ defmodule EctoTest.Types.Json do
   def type, do: :json
 
   def load({:ok, json}), do: {:ok, json}
-  def load(value), do: load(Poison.decode(value))
+  def load(value), do: load(Poison.decode(value, keys: :atoms!))
 
   def dump(value), do: Poison.encode(value)
 end

@@ -1,3 +1,8 @@
+defmodule Photo do
+  @derive [Poison.Encoder]
+  defstruct [:photo_id, :photo_small, :photo_big]
+end
+
 defmodule EctoTest.Model.JsonFieldTest do
 
   use Ecto.Schema
@@ -9,8 +14,13 @@ defmodule EctoTest.Model.JsonFieldTest do
     timestamps
   end
 
+  @spec insert(map) :: {:ok, Schema.t} | {:error, Changeset.t}
+  def insert(map) do
+    Map.merge(%__MODULE__{}, map) |> Repo.insert
+  end
+
   def test do
-    row = %__MODULE__{
+    row = %{
       photo: %{
         photo_id: 1,
         photo_small: %{
@@ -27,7 +37,7 @@ defmodule EctoTest.Model.JsonFieldTest do
         }
       }
     }
-    Repo.insert(row)
+    insert(row)
   end
 
   def get(id) do
