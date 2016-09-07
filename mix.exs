@@ -22,6 +22,7 @@ defmodule EctoTest.Mixfile do
     [
       {:poison, "~> 2.1"},
       {:postgrex, "~> 0.11.2"},
+      # {:postgrex, "~> 0.12.0"},
       {:ecto, "~> 2.0.2"},
       {:apex, "~> 0.5.1"},
       {:ex_machina, "~> 1.0.2"},

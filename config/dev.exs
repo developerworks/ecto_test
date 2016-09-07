@@ -11,7 +11,7 @@ config :ecto_test, EctoTest.Repo,
     {Ecto.LogEntry, :log, [:debug]}
   ],
   extensions: [
-    {EctoTest.Extension.JSON, library: Poison}
+    {Postgrex.Extensions.JSON, library: Poison}
   ]
 
 config :ip2location,
