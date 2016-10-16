@@ -21,12 +21,12 @@ defmodule EctoTest.Mixfile do
   defp deps do
     [
       {:poison, "~> 2.1"},
-      {:postgrex, "~> 0.11.2"},
+      {:postgrex, "~> 0.12.1"},
       # {:postgrex, "~> 0.12.0"},
-      {:ecto, "~> 2.0.2"},
+      {:ecto, "~> 2.0.5"},
       {:apex, "~> 0.5.1"},
       {:ex_machina, "~> 1.0.2"},
-      {:exfswatch, "~> 0.1.1"},
+      {:exfswatch, "~> 0.2.1"},
       {:exsync, "~> 0.1.2", only: [:dev]},
       {:ex_unit_notifier, "~> 0.1.1"},
       {:ip2location, "~> 0.1.0"},
